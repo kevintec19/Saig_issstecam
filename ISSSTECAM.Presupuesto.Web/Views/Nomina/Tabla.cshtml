@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Tabla";    
+}
+
+@section titulo{
+    <h2>Tabla</h2>
+}
+
+<h3>Tabla</h3>
+
+<div class="row" onload="buildHtmlTable('#excelDataTable')">
+    <div class="col-md-6">
+        <div id="fileuploader">Agregar archivo</div>
+        @*<div >¿Como modifico esto? xd</div>*@
+    </div>
+
+    @*    <div class="col-md-6 ">
+        <button class="btn btn-success" id="guardar">Guardar PDF</button>
+
+        <button type = "button" class="btn btn-success"id="tabla" onload="buildHtmlTable('#excelDataTable');">Generar Tabla</button>
+    </div>*@
+
+</div>
+<div class="row">
+    <div class="table" id="excelDataTable">
+    </div>
+</div>
+
+<script>
+
+    var myList =
+$.ajax({
+    type: 'GET',
+    url: '@Url.Action("TotalesConceptos", "Nomina")',
+    datatype: "json",
+    async: true,
+    success: function (data) {
+        myList = data;
+    }
+});
+
+function buildHtmlTable(selector) {
+    var columns = addAllColumnHeaders(myList, selector);
+    for (var i = 0; i < myList.length; i++) {
+        var row$ = $('<tr/>');
+
+        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+            var cellValue = myList[i][columns[colIndex]];
+            if (cellValue == null) cellValue = "";
+            row$.append($('<td/>').html(cellValue));
+        }
+        $(selector).append(row$);
+    }
+
+}
+function addAllColumnHeaders(myList, selector) {
+    var columnSet = [];
+    var headerTr$ = $('<tr/>');
+    for (var i = 0; i < myList.length; i++) {
+        var rowHash = myList[i];
+        for (var key in rowHash) {
+            if ($.inArray(key, columnSet) == -1) {
+                columnSet.push(key);
+                headerTr$.append($('<th/>').html(key));
+            }
+        }
+    }
+    $(selector).append(headerTr$);
+    return columnSet;
+}
+</script>

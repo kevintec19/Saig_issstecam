@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsReporteGastosSueldosSalarios" targetNamespace="http://tempuri.org/dtsReporteGastosSueldosSalarios.xsd" xmlns:mstns="http://tempuri.org/dtsReporteGastosSueldosSalarios.xsd" xmlns="http://tempuri.org/dtsReporteGastosSueldosSalarios.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsReporteGastosSueldosSalarios" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtsReporteGastosSueldosSalarios" msprop:Generator_UserDSName="dtsReporteGastosSueldosSalarios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CentroCostoTotal" msprop:Generator_TableClassName="CentroCostoTotalDataTable" msprop:Generator_TableVarName="tableCentroCostoTotal" msprop:Generator_TablePropName="CentroCostoTotal" msprop:Generator_RowDeletingName="CentroCostoTotalRowDeleting" msprop:Generator_RowChangingName="CentroCostoTotalRowChanging" msprop:Generator_RowEvHandlerName="CentroCostoTotalRowChangeEventHandler" msprop:Generator_RowDeletedName="CentroCostoTotalRowDeleted" msprop:Generator_UserTableName="CentroCostoTotal" msprop:Generator_RowChangedName="CentroCostoTotalRowChanged" msprop:Generator_RowEvArgName="CentroCostoTotalRowChangeEvent" msprop:Generator_RowClassName="CentroCostoTotalRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CentroCosto" msprop:Generator_ColumnVarNameInTable="columnCentroCosto" msprop:Generator_ColumnPropNameInRow="CentroCosto" msprop:Generator_ColumnPropNameInTable="CentroCostoColumn" msprop:Generator_UserColumnName="CentroCosto" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PromedioMensual" msprop:Generator_ColumnVarNameInTable="columnPromedioMensual" msprop:Generator_ColumnPropNameInRow="PromedioMensual" msprop:Generator_ColumnPropNameInTable="PromedioMensualColumn" msprop:Generator_UserColumnName="PromedioMensual" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Porcentaje" msprop:Generator_ColumnVarNameInTable="columnPorcentaje" msprop:Generator_ColumnPropNameInRow="Porcentaje" msprop:Generator_ColumnPropNameInTable="PorcentajeColumn" msprop:Generator_UserColumnName="Porcentaje" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NumeroTrabajadores" msprop:Generator_ColumnVarNameInTable="columnNumeroTrabajadores" msprop:Generator_ColumnPropNameInRow="NumeroTrabajadores" msprop:Generator_ColumnPropNameInTable="NumeroTrabajadoresColumn" msprop:Generator_UserColumnName="NumeroTrabajadores" type="xs:int" minOccurs="0" />
+              <xs:element name="PromedioMensualPorTrabajador" msprop:Generator_ColumnVarNameInTable="columnPromedioMensualPorTrabajador" msprop:Generator_ColumnPropNameInRow="PromedioMensualPorTrabajador" msprop:Generator_ColumnPropNameInTable="PromedioMensualPorTrabajadorColumn" msprop:Generator_UserColumnName="PromedioMensualPorTrabajador" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

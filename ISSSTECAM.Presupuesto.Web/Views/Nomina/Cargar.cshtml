@@ -1,0 +1,469 @@
+﻿@{
+    ViewBag.Title = "Cargar nómina";
+}
+
+@section titulo{
+    <h2>Cargar nómina</h2>
+}
+
+<h3>Cargar nómina</h3>
+
+<div class="row">
+    <div class="col-md-6" >
+        <div id="fileuploader">Agregar archivo</div>
+        @*<div >¿Como modifico esto? xd</div>*@
+    </div>
+
+    <div class="col-md-6 ">
+        <button class="btn btn-success" id="guardar">Guardar archivo</button>
+        @*<a class="btn btn-success" href="@Url.Action("ReporteConcentradoPrograma", "Calendario")" target="_blank">Reporte programa-concentrado</a>*@
+        @*<input id="fileupload" type="file" name="files[]" data-url="@Url.Action("ImportarArchivo", "Calendario")" multiple>*@
+        <button type = "button" class="btn btn-success"id="tabla" onclick="buildHtmlTable('#excelDataTable');">Generar Tabla</button>
+        <a class="btn btn-success" onclick="window.open('http://localhost:53317/Nomina/Tabla')">New</a>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12" id="grafica">
+    </div>
+    <div class="col-md-12" id="graficaConceptos">
+    </div>
+
+    <div class="col-md-12" id="graficaGastosTotalesCentroCosto">
+    </div>
+
+    <div class="col-md-12" id="graficaGastosTotalesPercepciones">
+    </div>
+     <div class="col-md-12" id="excelDataTable">
+@*         <button type = "button" class="btn btn-success" onclick="window.open('http://hayageek.com/jquery-multiple-file-upload/,z-index:999,top=300,left=300,width=300,height=300');">ShowTabla</button>*@
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+
+        $('#anios').select2();
+        habilitarImportacion();
+        //habilitarGuardarCalendario();
+        //habilitarCalendario();
+        //habilitarCargarClaves();
+
+    });
+
+    function prueba() {
+        $.ajax({
+            url: 'http://172.19.2.200/presupuesto/Nomina/TotalesConceptos',
+            success: function (r) {
+                console.log(r);
+            },
+            error: function (e) {
+                console.error(e);
+            }
+        });
+    }
+
+    function habilitarImportacion() {
+        $("#fileuploader").uploadFile({
+            url: '@Url.Action("ImportarArchivo", "Nomina")',
+            multiple: false,
+            maxFileCount: 1,
+            fileName: "calendario",
+            returnType: 'json',
+            allowedTypes: 'xlsx',
+            showDelete: true,
+            onSubmit: function (files) {
+                $.blockUI({
+                    message: 'Cargando archivo...',
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+
+                    }
+                });
+            },
+            onSuccess: function (files, data, xhr, pd) {
+
+                if (data.errores != "") {
+                    console.log('Empleados inexistentes', data.errores);
+                    alert("Estos empleados no existen: " + data.errores);
+                }
+                //alert(data.total);
+                //console.log(data.mensaje);
+                console.log(data.datos);
+
+                var datos = new Array();
+                $.each(data.datos, function(i , item){
+                    datos.push(new Array(item.Nombre, item.Total));
+                });
+
+                var datosConceptos = new Array();
+                $.each(data.conceptos, function (i, item) {
+                    datosConceptos.push(new Array(item.Concepto, item.Total));
+                });
+
+                crearGrafica(datos);
+                crearGraficaConceptos(datosConceptos);
+
+                crearGraficaGastosTotalesCentroCosto();
+                $.unblockUI();
+            },
+        });
+    }
+
+    function crearGrafica(datos)
+    {
+        console.log(datos);
+        Highcharts.chart('grafica', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Gastos por dirección'
+            },
+            subtitle: {
+                text: '(Solo percepciones)'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Monto (pesos)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Gasto: <b>${point.y:,.2f} pesos</b>'
+            },
+            plotOptions: {
+                series: {
+                    color: '#57B257'
+                }
+            },
+            series: [{
+                name: 'Gasto',
+                data: datos
+                    /*[
+                    ['Shanghai', 24.2],
+                    ['Beijing', 20.8],
+                    ['Karachi', 14.9],
+                    ['Shenzhen', 13.7],
+                    ['Guangzhou', 13.1],
+                    ['Istanbul', 12.7],
+                    ['Mumbai', 12.4],
+                    ['Moscow', 12.2],
+                    ['São Paulo', 12.0],
+                    ['Delhi', 11.7],
+                    ['Kinshasa', 11.5],
+                    ['Tianjin', 11.2],
+                    ['Lahore', 11.1],
+                    ['Jakarta', 10.6],
+                    ['Dongguan', 10.6],
+                    ['Lagos', 10.6],
+                    ['Bengaluru', 10.3],
+                    ['Seoul', 9.8],
+                    ['Foshan', 9.3],
+                    ['Tokyo', 9.3]
+                ]*/,
+                dataLabels: {
+                    enabled: true,
+                    //rotation: -90,
+                    //color: '#FFFFFF',
+                    //align: 'right',
+                    format: '${point.y:,.2f}', // one decimal
+                    //y: 10, // 10 pixels down from the top
+                    //style: {
+                    //    fontSize: '13px',
+                    //    fontFamily: 'Verdana, sans-serif'
+                    //}
+                }
+            }]
+        });
+    }
+
+    function crearGraficaConceptos(datos) {
+        console.log(datos);
+        Highcharts.chart('graficaConceptos', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Gastos por concepto'
+            },
+            subtitle: {
+            xAxis: {
+                text: '(Solo percepciones)'
+            },
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Monto (pesos)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Gasto: <b>${point.y:,.2f} pesos</b>'
+            },
+            series: [{
+                name: 'Gasto',
+                data: datos
+                /*[
+                ['Shanghai', 24.2],
+                ['Beijing', 20.8],
+                ['Karachi', 14.9],
+                ['Shenzhen', 13.7],
+                ['Guangzhou', 13.1],
+                ['Istanbul', 12.7],
+                ['Mumbai', 12.4],
+                ['Moscow', 12.2],
+                ['São Paulo', 12.0],
+                ['Delhi', 11.7],
+                ['Kinshasa', 11.5],
+                ['Tianjin', 11.2],
+                ['Lahore', 11.1],
+                ['Jakarta', 10.6],
+                ['Dongguan', 10.6],
+                ['Lagos', 10.6],
+                ['Bengaluru', 10.3],
+                ['Seoul', 9.8],
+                ['Foshan', 9.3],
+                ['Tokyo', 9.3]
+            ]*/,
+                dataLabels: {
+                    enabled: true,
+                    rotation: -45,
+                    //color: '#FFFFFF',
+                    align: 'left',
+                    format: '${point.y:,.2f}', // one decimal
+                    y: -10, // 10 pixels down from the top
+                    style: {
+                        fontSize: '8px',
+                        //fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+        });
+    }
+
+    function crearGraficaGastosTotalesCentroCosto() {
+
+        $.ajax({
+            url:'@Url.Action("TotalesCentrosCostos", "Nomina")',
+            success: function(resultado)
+            {
+
+                var datosConceptos = new Array();
+                $.each(resultado, function (i, item) {
+                    datosConceptos.push(new Array(item.Concepto, item.Total));
+                });
+
+                Highcharts.chart('graficaGastosTotalesCentroCosto', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Gastos por centro de costo'
+                    },
+                    subtitle: {
+                        text: '(Solo percepciones)'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '8px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Monto (pesos)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: 'Gasto: <b>${point.y:,.2f} pesos</b>'
+                    },
+                    plotOptions: {
+                        series: {
+                            color: '#57B257'
+                        }
+                    },
+                    series: [{
+                        name: 'Gasto',
+                        data: datosConceptos,
+                        dataLabels: {
+                            enabled: true,
+                            //rotation: -90,
+                            //color: '#FFFFFF',
+                            //align: 'right',
+                            format: '${point.y:,.2f}', // one decimal
+                            //y: 10, // 10 pixels down from the top
+                            //style: {
+                            //    fontSize: '13px',
+                            //    fontFamily: 'Verdana, sans-serif'
+                            //}
+                        }
+                    }]
+                });
+
+            },
+            error:function(error){
+                console.error(error);
+            }
+        });
+        
+    }
+
+    function crearGraficaGastosTotalesConcepto() {
+
+        $.ajax({
+            url: '@Url.Action("TotalesConceptos", "Nomina")',
+            success: function (resultado) {
+
+                var datosConceptos = new Array();
+                $.each(resultado, function (i, item) {
+                    datosConceptos.push(new Array(item.Concepto, item.Total));
+                });
+
+                Highcharts.chart('graficaGastosTotalesPercepciones', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Gastos por conceptos'
+                    },
+                    subtitle: {
+                        text: '(Solo percepciones)'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '8px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Monto (pesos)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: 'Gasto: <b>${point.y:,.2f} pesos</b>'
+                    },
+                    plotOptions: {
+                        series: {
+                            color: '#57B257'
+                        }
+                    },
+                    series: [{
+                        name: 'Gasto',
+                        data: datosConceptos,
+                        dataLabels: {
+                            enabled: true,
+                            //rotation: -90,
+                            //color: '#FFFFFF',
+                            //align: 'right',
+                            format: '${point.y:,.2f}', // one decimal
+                            //y: 10, // 10 pixels down from the top
+                            //style: {
+                            //    fontSize: '13px',
+                            //    fontFamily: 'Verdana, sans-serif'
+                            //}
+                        }
+                    }]
+                });
+
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+
+    }
+
+    var myList =
+$.ajax({
+    type: 'GET',
+    url:'@Url.Action("TotalesConceptos", "Nomina")',
+        //'http://172.19.2.200/presupuesto/nomina/totalesconceptos',
+    datatype: "json",
+    async: true,
+    success: function (data) {
+        myList = data;
+    }
+});
+
+
+
+    function buildHtmlTable(selector) {
+        var columns = addAllColumnHeaders(myList, selector);
+        for (var i = 0; i < myList.length; i++) {
+            var row$ = $('<tr/>');
+
+            for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                var cellValue = myList[i][columns[colIndex]];
+                if (cellValue == null) cellValue = "";
+                row$.append($('<td/>').html(cellValue));
+            }
+            $(selector).append(row$);
+        }
+
+    }
+    function addAllColumnHeaders(myList, selector) {
+        var columnSet = [];
+        var headerTr$ = $('<tr/>');
+        for (var i = 0; i < myList.length; i++) {
+            var rowHash = myList[i];
+            for (var key in rowHash) {
+                if ($.inArray(key, columnSet) == -1) {
+                    columnSet.push(key);
+                    headerTr$.append($('<th/>').html(key));
+                }
+            }
+        }
+        $(selector).append(headerTr$);
+        return columnSet;
+    }
+
+            
+</script>

@@ -1,0 +1,1084 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PresupuestoDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PresupuestoDBModelStoreContainer">
+          <EntitySet Name="Actividades" EntityType="PresupuestoDBModel.Store.Actividades" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CentrosCostos" EntityType="PresupuestoDBModel.Store.CentrosCostos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClavesPresupuestales" EntityType="PresupuestoDBModel.Store.ClavesPresupuestales" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Conceptos" EntityType="PresupuestoDBModel.Store.Conceptos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConfiguracionesActividades" EntityType="PresupuestoDBModel.Store.ConfiguracionesActividades" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConfiguracionesPartidas" EntityType="PresupuestoDBModel.Store.ConfiguracionesPartidas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConfiguracionesProgramas" EntityType="PresupuestoDBModel.Store.ConfiguracionesProgramas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConfiguracionesProyectos" EntityType="PresupuestoDBModel.Store.ConfiguracionesProyectos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DetallesNomina" EntityType="PresupuestoDBModel.Store.DetallesNomina" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Nomina" EntityType="PresupuestoDBModel.Store.Nomina" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Partidas" EntityType="PresupuestoDBModel.Store.Partidas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Programas" EntityType="PresupuestoDBModel.Store.Programas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Proyectos" EntityType="PresupuestoDBModel.Store.Proyectos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TiposConceptos" EntityType="PresupuestoDBModel.Store.TiposConceptos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TiposEmpleados" EntityType="PresupuestoDBModel.Store.TiposEmpleados" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Actividades_ConfiguracionesActividades" Association="PresupuestoDBModel.Store.FK_Actividades_ConfiguracionesActividades">
+            <End Role="ConfiguracionesActividades" EntitySet="ConfiguracionesActividades" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Actividades" Association="PresupuestoDBModel.Store.FK_ClavesPresupuestales_Actividades">
+            <End Role="Actividades" EntitySet="Actividades" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_CentrosCostos" Association="PresupuestoDBModel.Store.FK_ClavesPresupuestales_CentrosCostos">
+            <End Role="CentrosCostos" EntitySet="CentrosCostos" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Partidas" Association="PresupuestoDBModel.Store.FK_ClavesPresupuestales_Partidas">
+            <End Role="Partidas" EntitySet="Partidas" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Programas" Association="PresupuestoDBModel.Store.FK_ClavesPresupuestales_Programas">
+            <End Role="Programas" EntitySet="Programas" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Proyectos" Association="PresupuestoDBModel.Store.FK_ClavesPresupuestales_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conceptos_TiposConceptos" Association="PresupuestoDBModel.Store.FK_Conceptos_TiposConceptos">
+            <End Role="TiposConceptos" EntitySet="TiposConceptos" />
+            <End Role="Conceptos" EntitySet="Conceptos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conceptos_TiposEmpleados" Association="PresupuestoDBModel.Store.FK_Conceptos_TiposEmpleados">
+            <End Role="TiposEmpleados" EntitySet="TiposEmpleados" />
+            <End Role="Conceptos" EntitySet="Conceptos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesNomina_Conceptos" Association="PresupuestoDBModel.Store.FK_DetallesNomina_Conceptos">
+            <End Role="Conceptos" EntitySet="Conceptos" />
+            <End Role="DetallesNomina" EntitySet="DetallesNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesNomina_Nomina" Association="PresupuestoDBModel.Store.FK_DetallesNomina_Nomina">
+            <End Role="Nomina" EntitySet="Nomina" />
+            <End Role="DetallesNomina" EntitySet="DetallesNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesNomina_TiposEmpleados" Association="PresupuestoDBModel.Store.FK_DetallesNomina_TiposEmpleados">
+            <End Role="TiposEmpleados" EntitySet="TiposEmpleados" />
+            <End Role="DetallesNomina" EntitySet="DetallesNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partidas_ConfiguracionesPartidas" Association="PresupuestoDBModel.Store.FK_Partidas_ConfiguracionesPartidas">
+            <End Role="ConfiguracionesPartidas" EntitySet="ConfiguracionesPartidas" />
+            <End Role="Partidas" EntitySet="Partidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programas_ConfiguracionesProgramas" Association="PresupuestoDBModel.Store.FK_Programas_ConfiguracionesProgramas">
+            <End Role="ConfiguracionesProgramas" EntitySet="ConfiguracionesProgramas" />
+            <End Role="Programas" EntitySet="Programas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_ConfiguracionesProyectos" Association="PresupuestoDBModel.Store.FK_Proyectos_ConfiguracionesProyectos">
+            <End Role="ConfiguracionesProyectos" EntitySet="ConfiguracionesProyectos" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdConfiguracionActividad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CentrosCostos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="nvarchar" Nullable="false" MaxLength="8" />
+          <Property Name="Nombre" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Abreviatura" Type="nvarchar" MaxLength="12" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClavesPresupuestales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IdPrograma" Type="int" Nullable="false" />
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdActividad" Type="int" Nullable="false" />
+          <Property Name="IdPartida" Type="int" Nullable="false" />
+          <Property Name="IdCentroCosto" Type="int" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="PresupuestoEnero" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoFebrero" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoMarzo" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoAbril" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoMayo" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoJunio" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoJulio" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoAgosto" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoSeptiembre" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoOctubre" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoNoviembre" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PresupuestoDiciembre" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="Conceptos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="nvarchar" Nullable="false" MaxLength="12" />
+          <Property Name="ConceptoNomina" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ConceptoPresupuesto" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="IdTipoConcepto" Type="int" Nullable="false" />
+          <Property Name="PartidaPresupuestal" Type="nvarchar" MaxLength="10" />
+          <Property Name="CuentaContable" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdTipoEmpleadoAplica" Type="int" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesActividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="TamanioClave" Type="int" Nullable="false" />
+          <Property Name="ExpresionRegularValidacion" Type="nvarchar" Nullable="false" MaxLength="52" />
+          <Property Name="PosicionInicialEnClavePresupuestal" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesPartidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="TamanioClave" Type="int" Nullable="false" />
+          <Property Name="ExpresionRegular" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PosicionInicialEnClavePresupuestal" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesProgramas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="TamanioClave" Type="int" Nullable="false" />
+          <Property Name="ExpresionRegularValidacion" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="PosicionInicialEnClavePresupuestal" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesProyectos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="TamanioClave" Type="int" Nullable="false" />
+          <Property Name="ExpresionRegularValidacion" Type="nvarchar" Nullable="false" MaxLength="52" />
+          <Property Name="PosicionInicialEnClavePresupuestal" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallesNomina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdNomina" Type="int" Nullable="false" />
+          <Property Name="IdEmpleado" Type="int" Nullable="false" />
+          <Property Name="IdTipoEmpleado" Type="int" Nullable="false" />
+          <Property Name="IdConcepto" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Nullable="false" Precision="12" Scale="4" />
+          <Property Name="CentroCosto" Type="varchar" Nullable="false" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAplicacion" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="nvarchar" Nullable="false" MaxLength="8" />
+          <Property Name="Descripcion" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdConfiguracionPartida" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Programas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdConfiguracionPrograma" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proyectos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdConfiguracionProyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposConceptos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposEmpleados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Actividades_ConfiguracionesActividades">
+          <End Role="ConfiguracionesActividades" Type="PresupuestoDBModel.Store.ConfiguracionesActividades" Multiplicity="1" />
+          <End Role="Actividades" Type="PresupuestoDBModel.Store.Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesActividades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="IdConfiguracionActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Actividades">
+          <End Role="Actividades" Type="PresupuestoDBModel.Store.Actividades" Multiplicity="1" />
+          <End Role="ClavesPresupuestales" Type="PresupuestoDBModel.Store.ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_CentrosCostos">
+          <End Role="CentrosCostos" Type="PresupuestoDBModel.Store.CentrosCostos" Multiplicity="1" />
+          <End Role="ClavesPresupuestales" Type="PresupuestoDBModel.Store.ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentrosCostos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdCentroCosto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Partidas">
+          <End Role="Partidas" Type="PresupuestoDBModel.Store.Partidas" Multiplicity="1" />
+          <End Role="ClavesPresupuestales" Type="PresupuestoDBModel.Store.ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdPartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Programas">
+          <End Role="Programas" Type="PresupuestoDBModel.Store.Programas" Multiplicity="1" />
+          <End Role="ClavesPresupuestales" Type="PresupuestoDBModel.Store.ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Proyectos">
+          <End Role="Proyectos" Type="PresupuestoDBModel.Store.Proyectos" Multiplicity="1" />
+          <End Role="ClavesPresupuestales" Type="PresupuestoDBModel.Store.ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conceptos_TiposConceptos">
+          <End Role="TiposConceptos" Type="PresupuestoDBModel.Store.TiposConceptos" Multiplicity="1" />
+          <End Role="Conceptos" Type="PresupuestoDBModel.Store.Conceptos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposConceptos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Conceptos">
+              <PropertyRef Name="IdTipoConcepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conceptos_TiposEmpleados">
+          <End Role="TiposEmpleados" Type="PresupuestoDBModel.Store.TiposEmpleados" Multiplicity="0..1" />
+          <End Role="Conceptos" Type="PresupuestoDBModel.Store.Conceptos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEmpleados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Conceptos">
+              <PropertyRef Name="IdTipoEmpleadoAplica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesNomina_Conceptos">
+          <End Role="Conceptos" Type="PresupuestoDBModel.Store.Conceptos" Multiplicity="1" />
+          <End Role="DetallesNomina" Type="PresupuestoDBModel.Store.DetallesNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conceptos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetallesNomina">
+              <PropertyRef Name="IdConcepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesNomina_Nomina">
+          <End Role="Nomina" Type="PresupuestoDBModel.Store.Nomina" Multiplicity="1" />
+          <End Role="DetallesNomina" Type="PresupuestoDBModel.Store.DetallesNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomina">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetallesNomina">
+              <PropertyRef Name="IdNomina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesNomina_TiposEmpleados">
+          <End Role="TiposEmpleados" Type="PresupuestoDBModel.Store.TiposEmpleados" Multiplicity="1" />
+          <End Role="DetallesNomina" Type="PresupuestoDBModel.Store.DetallesNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEmpleados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetallesNomina">
+              <PropertyRef Name="IdTipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partidas_ConfiguracionesPartidas">
+          <End Role="ConfiguracionesPartidas" Type="PresupuestoDBModel.Store.ConfiguracionesPartidas" Multiplicity="1" />
+          <End Role="Partidas" Type="PresupuestoDBModel.Store.Partidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesPartidas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partidas">
+              <PropertyRef Name="IdConfiguracionPartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programas_ConfiguracionesProgramas">
+          <End Role="ConfiguracionesProgramas" Type="PresupuestoDBModel.Store.ConfiguracionesProgramas" Multiplicity="1" />
+          <End Role="Programas" Type="PresupuestoDBModel.Store.Programas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesProgramas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programas">
+              <PropertyRef Name="IdConfiguracionPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_ConfiguracionesProyectos">
+          <End Role="ConfiguracionesProyectos" Type="PresupuestoDBModel.Store.ConfiguracionesProyectos" Multiplicity="1" />
+          <End Role="Proyectos" Type="PresupuestoDBModel.Store.Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesProyectos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="IdConfiguracionProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PresupuestoDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PresupuestoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CentrosCostos" EntityType="PresupuestoDBModel.CentrosCostos" />
+          <EntitySet Name="Partidas" EntityType="PresupuestoDBModel.Partidas" />
+          <EntitySet Name="Actividades" EntityType="PresupuestoDBModel.Actividades" />
+          <EntitySet Name="ConfiguracionesActividades" EntityType="PresupuestoDBModel.ConfiguracionesActividades" />
+          <EntitySet Name="ConfiguracionesPartidas" EntityType="PresupuestoDBModel.ConfiguracionesPartidas" />
+          <EntitySet Name="ConfiguracionesProgramas" EntityType="PresupuestoDBModel.ConfiguracionesProgramas" />
+          <EntitySet Name="ConfiguracionesProyectos" EntityType="PresupuestoDBModel.ConfiguracionesProyectos" />
+          <EntitySet Name="Programas" EntityType="PresupuestoDBModel.Programas" />
+          <EntitySet Name="Proyectos" EntityType="PresupuestoDBModel.Proyectos" />
+          <AssociationSet Name="FK_Actividades_ConfiguracionesActividades" Association="PresupuestoDBModel.FK_Actividades_ConfiguracionesActividades">
+            <End Role="ConfiguracionesActividades" EntitySet="ConfiguracionesActividades" />
+            <End Role="Actividades" EntitySet="Actividades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partidas_ConfiguracionesPartidas" Association="PresupuestoDBModel.FK_Partidas_ConfiguracionesPartidas">
+            <End Role="ConfiguracionesPartidas" EntitySet="ConfiguracionesPartidas" />
+            <End Role="Partidas" EntitySet="Partidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programas_ConfiguracionesProgramas" Association="PresupuestoDBModel.FK_Programas_ConfiguracionesProgramas">
+            <End Role="ConfiguracionesProgramas" EntitySet="ConfiguracionesProgramas" />
+            <End Role="Programas" EntitySet="Programas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_ConfiguracionesProyectos" Association="PresupuestoDBModel.FK_Proyectos_ConfiguracionesProyectos">
+            <End Role="ConfiguracionesProyectos" EntitySet="ConfiguracionesProyectos" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <EntitySet Name="ClavesPresupuestales" EntityType="PresupuestoDBModel.ClavesPresupuestales" />
+          <AssociationSet Name="FK_ClavesPresupuestales_Actividades" Association="PresupuestoDBModel.FK_ClavesPresupuestales_Actividades">
+            <End Role="Actividades" EntitySet="Actividades" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_CentrosCostos" Association="PresupuestoDBModel.FK_ClavesPresupuestales_CentrosCostos">
+            <End Role="CentrosCostos" EntitySet="CentrosCostos" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Partidas" Association="PresupuestoDBModel.FK_ClavesPresupuestales_Partidas">
+            <End Role="Partidas" EntitySet="Partidas" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Programas" Association="PresupuestoDBModel.FK_ClavesPresupuestales_Programas">
+            <End Role="Programas" EntitySet="Programas" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClavesPresupuestales_Proyectos" Association="PresupuestoDBModel.FK_ClavesPresupuestales_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="ClavesPresupuestales" EntitySet="ClavesPresupuestales" />
+          </AssociationSet>
+          <EntitySet Name="Conceptos" EntityType="PresupuestoDBModel.Conceptos" />
+          <EntitySet Name="Nomina" EntityType="PresupuestoDBModel.Nomina" />
+          <EntitySet Name="TiposConceptos" EntityType="PresupuestoDBModel.TiposConceptos" />
+          <EntitySet Name="TiposEmpleados" EntityType="PresupuestoDBModel.TiposEmpleados" />
+          <AssociationSet Name="FK_Conceptos_TiposConceptos" Association="PresupuestoDBModel.FK_Conceptos_TiposConceptos">
+            <End Role="TiposConceptos" EntitySet="TiposConceptos" />
+            <End Role="Conceptos" EntitySet="Conceptos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Conceptos_TiposEmpleados" Association="PresupuestoDBModel.FK_Conceptos_TiposEmpleados">
+            <End Role="TiposEmpleados" EntitySet="TiposEmpleados" />
+            <End Role="Conceptos" EntitySet="Conceptos" />
+          </AssociationSet>
+          <EntitySet Name="DetallesNomina" EntityType="PresupuestoDBModel.DetallesNomina" />
+          <AssociationSet Name="FK_DetallesNomina_Conceptos" Association="PresupuestoDBModel.FK_DetallesNomina_Conceptos">
+            <End Role="Conceptos" EntitySet="Conceptos" />
+            <End Role="DetallesNomina" EntitySet="DetallesNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesNomina_Nomina" Association="PresupuestoDBModel.FK_DetallesNomina_Nomina">
+            <End Role="Nomina" EntitySet="Nomina" />
+            <End Role="DetallesNomina" EntitySet="DetallesNomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesNomina_TiposEmpleados" Association="PresupuestoDBModel.FK_DetallesNomina_TiposEmpleados">
+            <End Role="TiposEmpleados" EntitySet="TiposEmpleados" />
+            <End Role="DetallesNomina" EntitySet="DetallesNomina" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="CentrosCostos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Abreviatura" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="ClavesPresupuestales" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_CentrosCostos" FromRole="CentrosCostos" ToRole="ClavesPresupuestales" />
+        </EntityType>
+        <EntityType Name="Partidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Int32" Name="IdConfiguracionPartida" Nullable="false" />
+          <NavigationProperty Name="ConfiguracionesPartidas" Relationship="PresupuestoDBModel.FK_Partidas_ConfiguracionesPartidas" FromRole="Partidas" ToRole="ConfiguracionesPartidas" />
+          <NavigationProperty Name="ClavesPresupuestales" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Partidas" FromRole="Partidas" ToRole="ClavesPresupuestales" />
+        </EntityType>
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Int32" Name="IdConfiguracionActividad" Nullable="false" />
+          <NavigationProperty Name="ConfiguracionesActividades" Relationship="PresupuestoDBModel.FK_Actividades_ConfiguracionesActividades" FromRole="Actividades" ToRole="ConfiguracionesActividades" />
+          <NavigationProperty Name="ClavesPresupuestales" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Actividades" FromRole="Actividades" ToRole="ClavesPresupuestales" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesActividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Int32" Name="TamanioClave" Nullable="false" />
+          <Property Type="String" Name="ExpresionRegularValidacion" Nullable="false" MaxLength="52" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PosicionInicialEnClavePresupuestal" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="Actividades" Relationship="PresupuestoDBModel.FK_Actividades_ConfiguracionesActividades" FromRole="ConfiguracionesActividades" ToRole="Actividades" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesPartidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Int32" Name="TamanioClave" Nullable="false" />
+          <Property Type="String" Name="ExpresionRegular" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PosicionInicialEnClavePresupuestal" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="Partidas" Relationship="PresupuestoDBModel.FK_Partidas_ConfiguracionesPartidas" FromRole="ConfiguracionesPartidas" ToRole="Partidas" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesProgramas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Int32" Name="TamanioClave" Nullable="false" />
+          <Property Type="String" Name="ExpresionRegularValidacion" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PosicionInicialEnClavePresupuestal" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="Programas" Relationship="PresupuestoDBModel.FK_Programas_ConfiguracionesProgramas" FromRole="ConfiguracionesProgramas" ToRole="Programas" />
+        </EntityType>
+        <EntityType Name="ConfiguracionesProyectos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Int32" Name="TamanioClave" Nullable="false" />
+          <Property Type="String" Name="ExpresionRegularValidacion" Nullable="false" MaxLength="52" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PosicionInicialEnClavePresupuestal" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="Proyectos" Relationship="PresupuestoDBModel.FK_Proyectos_ConfiguracionesProyectos" FromRole="ConfiguracionesProyectos" ToRole="Proyectos" />
+        </EntityType>
+        <EntityType Name="Programas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Int32" Name="IdConfiguracionPrograma" Nullable="false" />
+          <NavigationProperty Name="ConfiguracionesProgramas" Relationship="PresupuestoDBModel.FK_Programas_ConfiguracionesProgramas" FromRole="Programas" ToRole="ConfiguracionesProgramas" />
+          <NavigationProperty Name="ClavesPresupuestales" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Programas" FromRole="Programas" ToRole="ClavesPresupuestales" />
+        </EntityType>
+        <EntityType Name="Proyectos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Int32" Name="IdConfiguracionProyecto" Nullable="false" />
+          <NavigationProperty Name="ConfiguracionesProyectos" Relationship="PresupuestoDBModel.FK_Proyectos_ConfiguracionesProyectos" FromRole="Proyectos" ToRole="ConfiguracionesProyectos" />
+          <NavigationProperty Name="ClavesPresupuestales" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Proyectos" FromRole="Proyectos" ToRole="ClavesPresupuestales" />
+        </EntityType>
+        <Association Name="FK_Actividades_ConfiguracionesActividades">
+          <End Type="PresupuestoDBModel.ConfiguracionesActividades" Role="ConfiguracionesActividades" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.Actividades" Role="Actividades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesActividades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Actividades">
+              <PropertyRef Name="IdConfiguracionActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partidas_ConfiguracionesPartidas">
+          <End Type="PresupuestoDBModel.ConfiguracionesPartidas" Role="ConfiguracionesPartidas" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.Partidas" Role="Partidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesPartidas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Partidas">
+              <PropertyRef Name="IdConfiguracionPartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programas_ConfiguracionesProgramas">
+          <End Type="PresupuestoDBModel.ConfiguracionesProgramas" Role="ConfiguracionesProgramas" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.Programas" Role="Programas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesProgramas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programas">
+              <PropertyRef Name="IdConfiguracionPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_ConfiguracionesProyectos">
+          <End Type="PresupuestoDBModel.ConfiguracionesProyectos" Role="ConfiguracionesProyectos" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.Proyectos" Role="Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfiguracionesProyectos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="IdConfiguracionProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClavesPresupuestales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IdPrograma" Nullable="false" />
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdActividad" Nullable="false" />
+          <Property Type="Int32" Name="IdPartida" Nullable="false" />
+          <Property Type="Int32" Name="IdCentroCosto" Nullable="false" />
+          <Property Type="Int32" Name="Anio" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Decimal" Name="PresupuestoEnero" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoFebrero" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoMarzo" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoAbril" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoMayo" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoJunio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoJulio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoAgosto" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoSeptiembre" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoOctubre" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoNoviembre" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PresupuestoDiciembre" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Actividades" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Actividades" FromRole="ClavesPresupuestales" ToRole="Actividades" />
+          <NavigationProperty Name="CentrosCostos" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_CentrosCostos" FromRole="ClavesPresupuestales" ToRole="CentrosCostos" />
+          <NavigationProperty Name="Partidas" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Partidas" FromRole="ClavesPresupuestales" ToRole="Partidas" />
+          <NavigationProperty Name="Programas" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Programas" FromRole="ClavesPresupuestales" ToRole="Programas" />
+          <NavigationProperty Name="Proyectos" Relationship="PresupuestoDBModel.FK_ClavesPresupuestales_Proyectos" FromRole="ClavesPresupuestales" ToRole="Proyectos" />
+        </EntityType>
+        <Association Name="FK_ClavesPresupuestales_Actividades">
+          <End Type="PresupuestoDBModel.Actividades" Role="Actividades" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.ClavesPresupuestales" Role="ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_CentrosCostos">
+          <End Type="PresupuestoDBModel.CentrosCostos" Role="CentrosCostos" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.ClavesPresupuestales" Role="ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentrosCostos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdCentroCosto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Partidas">
+          <End Type="PresupuestoDBModel.Partidas" Role="Partidas" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.ClavesPresupuestales" Role="ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdPartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Programas">
+          <End Type="PresupuestoDBModel.Programas" Role="Programas" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.ClavesPresupuestales" Role="ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClavesPresupuestales_Proyectos">
+          <End Type="PresupuestoDBModel.Proyectos" Role="Proyectos" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.ClavesPresupuestales" Role="ClavesPresupuestales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClavesPresupuestales">
+              <PropertyRef Name="IdProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Conceptos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConceptoNomina" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConceptoPresupuesto" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IdTipoConcepto" Nullable="false" />
+          <Property Type="String" Name="PartidaPresupuestal" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CuentaContable" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IdTipoEmpleadoAplica" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="TiposConceptos" Relationship="PresupuestoDBModel.FK_Conceptos_TiposConceptos" FromRole="Conceptos" ToRole="TiposConceptos" />
+          <NavigationProperty Name="TiposEmpleados" Relationship="PresupuestoDBModel.FK_Conceptos_TiposEmpleados" FromRole="Conceptos" ToRole="TiposEmpleados" />
+          <NavigationProperty Name="DetallesNomina" Relationship="PresupuestoDBModel.FK_DetallesNomina_Conceptos" FromRole="Conceptos" ToRole="DetallesNomina" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaAplicacion" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="DetallesNomina" Relationship="PresupuestoDBModel.FK_DetallesNomina_Nomina" FromRole="Nomina" ToRole="DetallesNomina" />
+        </EntityType>
+        <EntityType Name="TiposConceptos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="Conceptos" Relationship="PresupuestoDBModel.FK_Conceptos_TiposConceptos" FromRole="TiposConceptos" ToRole="Conceptos" />
+        </EntityType>
+        <EntityType Name="TiposEmpleados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <NavigationProperty Name="Conceptos" Relationship="PresupuestoDBModel.FK_Conceptos_TiposEmpleados" FromRole="TiposEmpleados" ToRole="Conceptos" />
+          <NavigationProperty Name="DetallesNomina" Relationship="PresupuestoDBModel.FK_DetallesNomina_TiposEmpleados" FromRole="TiposEmpleados" ToRole="DetallesNomina" />
+        </EntityType>
+        <Association Name="FK_Conceptos_TiposConceptos">
+          <End Type="PresupuestoDBModel.TiposConceptos" Role="TiposConceptos" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.Conceptos" Role="Conceptos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposConceptos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Conceptos">
+              <PropertyRef Name="IdTipoConcepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Conceptos_TiposEmpleados">
+          <End Type="PresupuestoDBModel.TiposEmpleados" Role="TiposEmpleados" Multiplicity="0..1" />
+          <End Type="PresupuestoDBModel.Conceptos" Role="Conceptos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEmpleados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Conceptos">
+              <PropertyRef Name="IdTipoEmpleadoAplica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetallesNomina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IdNomina" Nullable="false" />
+          <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoEmpleado" Nullable="false" />
+          <Property Type="Int32" Name="IdConcepto" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="12" Scale="4" />
+          <Property Type="String" Name="CentroCosto" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Conceptos" Relationship="PresupuestoDBModel.FK_DetallesNomina_Conceptos" FromRole="DetallesNomina" ToRole="Conceptos" />
+          <NavigationProperty Name="Nomina" Relationship="PresupuestoDBModel.FK_DetallesNomina_Nomina" FromRole="DetallesNomina" ToRole="Nomina" />
+          <NavigationProperty Name="TiposEmpleados" Relationship="PresupuestoDBModel.FK_DetallesNomina_TiposEmpleados" FromRole="DetallesNomina" ToRole="TiposEmpleados" />
+        </EntityType>
+        <Association Name="FK_DetallesNomina_Conceptos">
+          <End Type="PresupuestoDBModel.Conceptos" Role="Conceptos" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.DetallesNomina" Role="DetallesNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conceptos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetallesNomina">
+              <PropertyRef Name="IdConcepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesNomina_Nomina">
+          <End Type="PresupuestoDBModel.Nomina" Role="Nomina" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.DetallesNomina" Role="DetallesNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nomina">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetallesNomina">
+              <PropertyRef Name="IdNomina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesNomina_TiposEmpleados">
+          <End Type="PresupuestoDBModel.TiposEmpleados" Role="TiposEmpleados" Multiplicity="1" />
+          <End Type="PresupuestoDBModel.DetallesNomina" Role="DetallesNomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposEmpleados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetallesNomina">
+              <PropertyRef Name="IdTipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PresupuestoDBModelStoreContainer" CdmEntityContainer="PresupuestoDBEntities">
+          <EntitySetMapping Name="CentrosCostos">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.CentrosCostos">
+              <MappingFragment StoreEntitySet="CentrosCostos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partidas">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.Partidas">
+              <MappingFragment StoreEntitySet="Partidas">
+                <ScalarProperty Name="IdConfiguracionPartida" ColumnName="IdConfiguracionPartida" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actividades">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.Actividades">
+              <MappingFragment StoreEntitySet="Actividades">
+                <ScalarProperty Name="IdConfiguracionActividad" ColumnName="IdConfiguracionActividad" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfiguracionesActividades">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.ConfiguracionesActividades">
+              <MappingFragment StoreEntitySet="ConfiguracionesActividades">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PosicionInicialEnClavePresupuestal" ColumnName="PosicionInicialEnClavePresupuestal" />
+                <ScalarProperty Name="ExpresionRegularValidacion" ColumnName="ExpresionRegularValidacion" />
+                <ScalarProperty Name="TamanioClave" ColumnName="TamanioClave" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfiguracionesPartidas">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.ConfiguracionesPartidas">
+              <MappingFragment StoreEntitySet="ConfiguracionesPartidas">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PosicionInicialEnClavePresupuestal" ColumnName="PosicionInicialEnClavePresupuestal" />
+                <ScalarProperty Name="ExpresionRegular" ColumnName="ExpresionRegular" />
+                <ScalarProperty Name="TamanioClave" ColumnName="TamanioClave" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfiguracionesProgramas">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.ConfiguracionesProgramas">
+              <MappingFragment StoreEntitySet="ConfiguracionesProgramas">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PosicionInicialEnClavePresupuestal" ColumnName="PosicionInicialEnClavePresupuestal" />
+                <ScalarProperty Name="ExpresionRegularValidacion" ColumnName="ExpresionRegularValidacion" />
+                <ScalarProperty Name="TamanioClave" ColumnName="TamanioClave" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfiguracionesProyectos">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.ConfiguracionesProyectos">
+              <MappingFragment StoreEntitySet="ConfiguracionesProyectos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PosicionInicialEnClavePresupuestal" ColumnName="PosicionInicialEnClavePresupuestal" />
+                <ScalarProperty Name="ExpresionRegularValidacion" ColumnName="ExpresionRegularValidacion" />
+                <ScalarProperty Name="TamanioClave" ColumnName="TamanioClave" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programas">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.Programas">
+              <MappingFragment StoreEntitySet="Programas">
+                <ScalarProperty Name="IdConfiguracionPrograma" ColumnName="IdConfiguracionPrograma" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyectos">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.Proyectos">
+              <MappingFragment StoreEntitySet="Proyectos">
+                <ScalarProperty Name="IdConfiguracionProyecto" ColumnName="IdConfiguracionProyecto" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClavesPresupuestales">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.ClavesPresupuestales">
+              <MappingFragment StoreEntitySet="ClavesPresupuestales">
+                <ScalarProperty Name="PresupuestoDiciembre" ColumnName="PresupuestoDiciembre" />
+                <ScalarProperty Name="PresupuestoNoviembre" ColumnName="PresupuestoNoviembre" />
+                <ScalarProperty Name="PresupuestoOctubre" ColumnName="PresupuestoOctubre" />
+                <ScalarProperty Name="PresupuestoSeptiembre" ColumnName="PresupuestoSeptiembre" />
+                <ScalarProperty Name="PresupuestoAgosto" ColumnName="PresupuestoAgosto" />
+                <ScalarProperty Name="PresupuestoJulio" ColumnName="PresupuestoJulio" />
+                <ScalarProperty Name="PresupuestoJunio" ColumnName="PresupuestoJunio" />
+                <ScalarProperty Name="PresupuestoMayo" ColumnName="PresupuestoMayo" />
+                <ScalarProperty Name="PresupuestoAbril" ColumnName="PresupuestoAbril" />
+                <ScalarProperty Name="PresupuestoMarzo" ColumnName="PresupuestoMarzo" />
+                <ScalarProperty Name="PresupuestoFebrero" ColumnName="PresupuestoFebrero" />
+                <ScalarProperty Name="PresupuestoEnero" ColumnName="PresupuestoEnero" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="IdCentroCosto" ColumnName="IdCentroCosto" />
+                <ScalarProperty Name="IdPartida" ColumnName="IdPartida" />
+                <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="IdPrograma" ColumnName="IdPrograma" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conceptos">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.Conceptos">
+              <MappingFragment StoreEntitySet="Conceptos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdTipoEmpleadoAplica" ColumnName="IdTipoEmpleadoAplica" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="PartidaPresupuestal" ColumnName="PartidaPresupuestal" />
+                <ScalarProperty Name="IdTipoConcepto" ColumnName="IdTipoConcepto" />
+                <ScalarProperty Name="ConceptoPresupuesto" ColumnName="ConceptoPresupuesto" />
+                <ScalarProperty Name="ConceptoNomina" ColumnName="ConceptoNomina" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomina">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.Nomina">
+              <MappingFragment StoreEntitySet="Nomina">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaAplicacion" ColumnName="FechaAplicacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposConceptos">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.TiposConceptos">
+              <MappingFragment StoreEntitySet="TiposConceptos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposEmpleados">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.TiposEmpleados">
+              <MappingFragment StoreEntitySet="TiposEmpleados">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesNomina">
+            <EntityTypeMapping TypeName="PresupuestoDBModel.DetallesNomina">
+              <MappingFragment StoreEntitySet="DetallesNomina">
+                <ScalarProperty Name="CentroCosto" ColumnName="CentroCosto" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="IdConcepto" ColumnName="IdConcepto" />
+                <ScalarProperty Name="IdTipoEmpleado" ColumnName="IdTipoEmpleado" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdNomina" ColumnName="IdNomina" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
