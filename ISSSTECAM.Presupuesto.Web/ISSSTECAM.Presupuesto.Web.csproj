@@ -21,6 +21,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -344,7 +346,9 @@
     <Content Include="Scripts\simple-line-icons\fonts\Simple-Line-Icons.svg" />
     <Content Include="Scripts\spinkit\css\spinkit.css" />
     <Content Include="Scripts\Token.js" />
-    <Content Include="Scripts\Upload\jquery.uploadfile.min.js" />
+    <Content Include="Scripts\Upload\jquery.uploadfile.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Upload\uploadfile.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Service References\RH.ServiciosWeb\ISSSTECAM.Presupuesto.Web.RH.ServiciosWeb.CompositeType.datasource">

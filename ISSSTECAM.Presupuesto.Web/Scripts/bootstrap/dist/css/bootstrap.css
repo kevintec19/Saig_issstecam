@@ -182,6 +182,7 @@ optgroup {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+
 }
 td,
 th {
@@ -251,10 +252,11 @@ th {
   .table {
     border-collapse: collapse !important;
   }
-  .table td,
-  .table th {
-    background-color: #fff !important;
-  }
+    .table td,
+    .table th {
+        background-color: #fff !important;
+     
+    }
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important;
@@ -2251,7 +2253,7 @@ pre code {
   }
 }
 table {
-  background-color: transparent;
+    background-color: transparent;
 }
 caption {
   padding-top: 8px;

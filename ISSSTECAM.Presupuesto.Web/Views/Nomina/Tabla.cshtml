@@ -1,71 +1,77 @@
 ﻿@{
-    ViewBag.Title = "Tabla";    
+    ViewBag.Title = "Tabla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section titulo{
-    <h2>Tabla</h2>
-}
+<h2>Tabla</h2>
 
-<h3>Tabla</h3>
-
-<div class="row" onload="buildHtmlTable('#excelDataTable')">
-    <div class="col-md-6">
-        <div id="fileuploader">Agregar archivo</div>
-        @*<div >¿Como modifico esto? xd</div>*@
-    </div>
-
-    @*    <div class="col-md-6 ">
-        <button class="btn btn-success" id="guardar">Guardar PDF</button>
-
-        <button type = "button" class="btn btn-success"id="tabla" onload="buildHtmlTable('#excelDataTable');">Generar Tabla</button>
-    </div>*@
-
+<div class="col-md-6 ">
+    <button class="btn btn-success" id="guardar">Guardar archivo</button>
+    @*<a class="btn btn-success" href="@Url.Action("ReporteConcentradoPrograma", "Calendario")" target="_blank">Reporte programa-concentrado</a>*@
+    @*<input id="fileupload" type="file" name="files[]" data-url="@Url.Action("ImportarArchivo", "Calendario")" multiple>*@
+    <button type="button" class="btn btn-success" id="tabla" onclick="buildHtmlTable('#excelDataTable');">Generar Tabla</button>
+    @*<a class="btn btn-success" href="http://localhost:53317/Nomina/Tabla" target_blank>New</a>*@
+    
 </div>
+
+
 <div class="row">
-    <div class="table" id="excelDataTable">
+
+    <div class="col-md-12" name="tab" id="excelDataTable">
     </div>
 </div>
 
 <script>
 
-    var myList =
+    @*var myList =
 $.ajax({
     type: 'GET',
-    url: '@Url.Action("TotalesConceptos", "Nomina")',
+    url:'http://172.19.2.200/presupuesto/nomina/totalesconceptos',
+        //'http://172.19.2.200/presupuesto/nomina/totalesconceptos',
+    '@Url.Action("TotalesConceptos", "Nomina")',
     datatype: "json",
     async: true,
     success: function (data) {
         myList = data;
     }
-});
+});*@
+    var myList = [
+{"Concepto":"SUELDO","Total":1231253.92}, 
+{"Concepto":"SUELDO EVENTUAL","Total":202441.97}, {"Concepto":"DIA ECONOMICO","Total":2442.86},
+{"Concepto":"SUBS. X INCAP.","Total":2433.99}, {"Concepto":"P. S. M.","Total":101513.34},
+{"Concepto":"SUBS. X INCAP. (EVENTUAL)","Total":8841.51},{"Concepto":"QUINQUENIO","Total":4057.45}];
 
-function buildHtmlTable(selector) {
-    var columns = addAllColumnHeaders(myList, selector);
-    for (var i = 0; i < myList.length; i++) {
-        var row$ = $('<tr/>');
 
-        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-            var cellValue = myList[i][columns[colIndex]];
-            if (cellValue == null) cellValue = "";
-            row$.append($('<td/>').html(cellValue));
+
+    function buildHtmlTable(selector) {
+        var columns = addAllColumnHeaders(myList, selector);
+        for (var i = 0; i < myList.length; i++) {
+            var row$ = $('<tr/>');
+
+            for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                var cellValue = myList[i][columns[colIndex]];
+                if (cellValue == null) cellValue = "";
+                row$.append($('<td/>').html(cellValue));
+            }
+            $(selector).append(row$);
         }
-        $(selector).append(row$);
-    }
 
-}
-function addAllColumnHeaders(myList, selector) {
-    var columnSet = [];
-    var headerTr$ = $('<tr/>');
-    for (var i = 0; i < myList.length; i++) {
-        var rowHash = myList[i];
-        for (var key in rowHash) {
-            if ($.inArray(key, columnSet) == -1) {
-                columnSet.push(key);
-                headerTr$.append($('<th/>').html(key));
+    }
+    function addAllColumnHeaders(myList, selector) {
+        var columnSet = [];
+        var headerTr$ = $('<tr/>');
+        for (var i = 0; i < myList.length; i++) {
+            var rowHash = myList[i];
+            for (var key in rowHash) {
+                if ($.inArray(key, columnSet) == -1) {
+                    columnSet.push(key);
+                    headerTr$.append($('<th/>').html(key));
+                }
             }
         }
+        $(selector).append(headerTr$);
+        return columnSet;
     }
-    $(selector).append(headerTr$);
-    return columnSet;
-}
+
+
 </script>
