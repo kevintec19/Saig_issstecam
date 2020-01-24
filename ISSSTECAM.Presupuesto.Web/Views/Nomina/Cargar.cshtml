@@ -11,62 +11,31 @@
 <div class="row">
     <div class="col-md-6">
         <div id="fileuploader">Agregar archivo</div>
-        @*<div >¿Como modifico esto? xd</div>*@
     </div>
 
     <div class="col-md-6 ">
-        <button class="btn btn-success" id="guardar">Guardar archivo</button>
+        <button class="btn btn-success" id="guardar" title="Guarda el archivo en la base de datos">Guardar archivo</button>
+        <button class="btn btn-success" title="Guarda la tabla en formato PDF"id="PDF" onclick="CreatePDF();">Guardar Tabla</button>
         @*<a class="btn btn-success" href="@Url.Action("ReporteConcentradoPrograma", "Calendario")" target="_blank">Reporte programa-concentrado</a>*@
         @*<input id="fileupload" type="file" name="files[]" data-url="@Url.Action("ImportarArchivo", "Calendario")" multiple>*@
-        <button type="button" class="btn btn-success" id="tabla" onclick="  ShowModal();">Generar Tabla</button>
+        @*<button type="button" class="btn btn-success" id="tabla" onclick="  ShowModal();">Generar Tabla</button>*@
     </div>
-    @*//////////////////*@
-    <div id="Modal" class="modal-body" style="display:none;background-color:transparent;width:100%;height:100%;position:relative;">
-        <div class="modal-content" style="width:50%;z-index:999999999999999;float:initial;margin-left:30%;height:auto;">
-            <table id="excelDataTable"></table>
-            <button class="btn btn-succes" onclick="HideModal();" style="position:center;background-color:red;margin-left:50%">X</button>
-            @*<button class="btn btn-success" onclick="Delete('#');" style="position:center">Imprimir PDF</button>*@
-        </div>
-    </div>
-    @*/////*@
-</div>
-@*////////////////seccion de pruebas////////////////*@
-<a data-toggle="modal" href="PopUpNoAutorizado">Abrir</a>
-<div class="modal" id="PopUpNoAutorizado">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header Popup">
-                <div class="col-xs-12">
-                    <h5>
-                        ENTRADA ELECTRONICA
-                        <small class="text-muted color">Almacen Planta Naco</small>
-                    </h5>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-8">
-                    <img src="" />
-                </div>
-                <div class="col-sx-12 centrarTexto">
-                    <h1>Acceso no autorizado</h1>
-                </div>
-            </div>
-            <div class="modal-footer Popup">
-                <div class="col-xs-10 modal-edit">
-                    <h5>100 Años</h5>
-                </div>
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="" alt="imagen-responsive" />
-                </div>
+    @*////////////////////////////////////seccion donde se muestra la tabla generada/////////////////////////////////////////////////////////////////*@
+    <div id="Modal" class="modal-backdrop" style="display:none;width:100%;z-index:9999999999999999999;height:100%;position:absolute;top:0%;left:0%;">
+        <div class="modal-content" style="width:350px;z-index:9999999999999999999999999999999;left:25%;margin-right:10%;margin-left:10%;height:auto;">
+            <div class="modal-header Popup" style="height:auto;text-align:center;">
+                Gastos por concepto
+                <table id="excelDataTable"></table>
+                ¿Es correcta su tabla?
+                <button title="Podra proceder a guardar sus grafícas y su tabla"class="btn btn-success"data-backdrop="false"onclick="HideModal();"style="position:center;margin-left:1%">SI</button>
+                <button title="La tabla se borrará"class="btn btn-danger" data-backdrop="false" onclick="HideModal(); Delete();" style="position:center;margin-left:2%">NO</button>
             </div>
         </div>
     </div>
+    @*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 </div>
-@*/////////////////////////////////*@
+
 <div class="row" style="z-index:9">
-
-
     <div class="col-md-12" id="grafica">
     </div>
     <div class="col-md-12" id="graficaConceptos">
@@ -79,27 +48,31 @@
 
 <style>
     table {
-        /* margin:auto; */
-        position: relative; /*vodka**/
-        background-color: #07b489;
-        margin-left: 5%;
-        margin-right: 5%;
+        position: center;
+        background-color: rgba(151, 220, 255, 0.85);
+        margin-left: 0%;
+        margin-right: 0%;
         margin-bottom: 0%;
         margin-top: 0%;
-        border-color: aquamarine;
-        border: solid 5px;
-        width: auto;
+        border: groove 4px rgba(0, 70, 156, 0.5);
+        width: 100%;
+    
     }
-
     td, th {
-        border: solid 1px #777;
-        padding: 5px;
-        text-align: center;
-        color: white;
+        border: solid 2px rgba(0, 70, 156, 0.75);
+        padding: 4px;
+        text-align: left;
+        color: black;
     }
-
-    #Modal {
-        background-color: rgba(0,0,0,0.7);
+    th{
+        font-weight : bold;
+        font-size:larger;   }
+    .modal-backdrop {
+        background-color: rgba(00,00,00,0.5);
+    }
+    .modal-content {
+        font-weight : bold;
+        color:black;
     }
 </style>
 
@@ -107,15 +80,17 @@
     //buildHtmlTable('#excelDataTable');
     function ShowModal(){
         document.getElementById('Modal').style.display = 'inline';
-
     }
     function HideModal(){
         document.getElementById('Modal').style.display = 'none';
-        //$.unblockUI();
+        $.unblockUI();
     }
     function Delete() {
   document.getElementById('excelDataTable').innerHTML='';
- }
+    }
+    function CreatePDF(){
+        //Colocar la función para crear PDF
+    }
 
 
     $(function () {
@@ -160,7 +135,6 @@
                         '-moz-border-radius': '10px',
                         opacity: .5,
                         color: '#fff'
-
                     }
                 });
             },
@@ -191,13 +165,14 @@
                 $.unblockUI();
 
                 buildHtmlTable('#excelDataTable');
+                 ShowModal();
             },
             //termina la funcion de (file, data, xhr, pd)
 
 
         });
     }
-
+               //Se obtiene el Json para generar la tabla
             var myList = $.ajax({
                 type: 'GET',
                 url: '@Url.Action("TotalesConceptos", "Nomina")',
@@ -207,8 +182,7 @@
                     myList = data;
                 }
             });
-            //onSuccess: function (files, data, xhr, pd) {
-            //
+            //Xomienza la elaboración de la tabla
             function buildHtmlTable(selector) {
                 var columns = addAllColumnHeaders(myList, selector);
                 for (var i = 0; i < myList.length; i++) {
@@ -240,9 +214,6 @@
 
     }
     //termina la elaboración de la tabla
-
-
-
 
 
     function crearGrafica(datos)
