@@ -25,11 +25,6 @@ namespace ISSSTECAM.Presupuesto.Web.Controllers
         {
             return PartialView();
         }
-       public ActionResult Tabla()
-        {
-            return PartialView();
-        }
-
 
         [HttpPost]
         public JsonResult ImportarArchivo(/*string fechaNomina*/)

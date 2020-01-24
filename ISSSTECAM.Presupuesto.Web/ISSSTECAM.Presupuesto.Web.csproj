@@ -409,7 +409,6 @@
     <None Include="Service References\RH.ServiciosWeb\ServicioEmpleados3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Nomina\Tabla.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
