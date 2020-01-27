@@ -14,8 +14,8 @@
     </div>
 
     <div class="col-md-6 ">
-        <button class="btn btn-success" id="guardar" title="Guarda el archivo en la base de datos">Guardar archivo</button>
-        <button class="btn btn-success" title="Guarda la tabla en formato PDF"id="PDF" onclick="CreatePDF();">Guardar Tabla</button>
+        <button class="btn btn-success" id="guardar"title="Guarda el archivo en la base de datos"style="display:none;">Guardar archivo</button>
+        <button class="btn btn-success" title="Guarda la tabla en formato PDF"id="PDF"style="display:none;"onclick="CreatePDF();">Guardar Tabla</button>
         @*<a class="btn btn-success" href="@Url.Action("ReporteConcentradoPrograma", "Calendario")" target="_blank">Reporte programa-concentrado</a>*@
         @*<input id="fileupload" type="file" name="files[]" data-url="@Url.Action("ImportarArchivo", "Calendario")" multiple>*@
         @*<button type="button" class="btn btn-success" id="tabla" onclick="  ShowModal();">Generar Tabla</button>*@
@@ -28,7 +28,7 @@
                 <table id="excelDataTable"></table>
                 ¿Es correcta su tabla?
                 <button title="Podra proceder a guardar sus grafícas y su tabla"class="btn btn-success"data-backdrop="false"onclick="HideModal();"style="position:center;margin-left:1%">SI</button>
-                <button title="La tabla se borrará"class="btn btn-danger" data-backdrop="false" onclick="HideModal(); Delete();" style="position:center;margin-left:2%">NO</button>
+                <button title="La tabla se borrará"class="btn btn-danger" data-backdrop="false" onclick="Delete();" style="position:center;margin-left:2%">NO</button>
             </div>
         </div>
     </div>
@@ -81,11 +81,15 @@
     function ShowModal(){
         document.getElementById('Modal').style.display = 'inline';
     }
-    function HideModal(){
+    function HideModal() {
+        //mostrar botones de guardar
+        document.getElementById('PDF').style.display = 'inline';
+        document.getElementById('guardar').style.display = 'inline';
         document.getElementById('Modal').style.display = 'none';
         $.unblockUI();
     }
     function Delete() {
+  document.getElementById('Modal').style.display = 'none';
   document.getElementById('excelDataTable').innerHTML='';
     }
     function CreatePDF(){
