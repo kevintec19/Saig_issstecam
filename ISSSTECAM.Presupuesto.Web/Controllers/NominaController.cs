@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EO.Pdf.Mvc;
+using EO.Pdf;
 
 namespace ISSSTECAM.Presupuesto.Web.Controllers
 {
@@ -27,6 +29,18 @@ namespace ISSSTECAM.Presupuesto.Web.Controllers
         }
 
         [HttpPost]
+        //[EO.Pdf.Mvc.RenderAsPDF(AutoConvert = falso)]
+
+        //public ActionResult Input(AddressModel m)
+        //{
+        //    // Activa la conversión solo cuando m.ExportToPDF es verdadero 
+        //    if (m.ExportToPDF)
+        //    {
+        //        EO.Pdf.Mvc.MVCToPDF.ResultFileName = "AddressLabel";
+        //        EO.Pdf.Mvc.MVCToPDF.RenderAsPDF();
+        //    }
+        //    return View("AddressLabel", m);
+        //}
         public JsonResult ImportarArchivo(/*string fechaNomina*/)
         {
             Nomina nueva = new Nomina();

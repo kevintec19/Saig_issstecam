@@ -12,30 +12,31 @@
     <div class="col-md-6">
         <div id="fileuploader">Agregar archivo</div>
     </div>
-
     <div class="col-md-6 ">
         <button class="btn btn-success" id="guardar"title="Guarda el archivo en la base de datos"style="display:none;">Guardar archivo</button>
         <button class="btn btn-success" title="Guarda la tabla en formato PDF"id="PDF"style="display:none;"onclick="CreatePDF();">Guardar Tabla</button>
         @*<a class="btn btn-success" href="@Url.Action("ReporteConcentradoPrograma", "Calendario")" target="_blank">Reporte programa-concentrado</a>*@
         @*<input id="fileupload" type="file" name="files[]" data-url="@Url.Action("ImportarArchivo", "Calendario")" multiple>*@
-        @*<button type="button" class="btn btn-success" id="tabla" onclick="  ShowModal();">Generar Tabla</button>*@
     </div>
     @*////////////////////////////////////seccion donde se muestra la tabla generada/////////////////////////////////////////////////////////////////*@
-    <div id="Modal" class="modal-backdrop" style="display:none;width:100%;z-index:9999999999999999999;height:100%;position:absolute;top:0%;left:0%;">
-        <div class="modal-content" style="width:350px;z-index:9999999999999999999999999999999;left:25%;margin-right:10%;margin-left:10%;height:auto;">
-            <div class="modal-header Popup" style="height:auto;text-align:center;">
-                Gastos por concepto
-                <table id="excelDataTable"></table>
-                ¿Es correcta su tabla?
-                <button title="Podra proceder a guardar sus grafícas y su tabla"class="btn btn-success"data-backdrop="false"onclick="HideModal();"style="position:center;margin-left:1%">SI</button>
-                <button title="La tabla se borrará"class="btn btn-danger" data-backdrop="false" onclick="Delete();" style="position:center;margin-left:2%">NO</button>
+    <div id="Modal" class="modal-backdrop">
+        <div class="modal-content" id="ModalTabla" style="width:400px;z-index:9999999999999999999999999999999;left:25%;margin-right:10%;margin-left:10%;height:auto;">
+            Gastos por concepto
+            <div class="modal-header Popup" id="cell" style="height:auto;text-align:center;">
+
+                <div style="width:300px;z-index:9999999999999999999999999999999;margin-right:10%;margin-left:10%;height:auto;">
+                    <table id="excelDataTable"></table>
+                </div>
             </div>
+            ¿Es correcta su tabla?
+            <button title="Podra proceder a guardar sus grafícas y su tabla" class="btn btn-success" data-backdrop="false" onclick="HideModal();" style="position:center;margin-left:1%">SI</button>
+            <button title="La tabla se borrará" class="btn btn-danger" data-backdrop="false" onclick="Delete();" style="position:center;margin-left:2%">NO</button>
+            <button title="Podra proceder a guardar sus grafícas y su tabla" class="btn btn-success" id="ConvertPDF" data-backdrop="false" onclick="CreatePDF();" style="position:center;margin-left:1%">PDF</button>
         </div>
     </div>
     @*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 </div>
-
-<div class="row" style="z-index:9">
+<div class="row" id="Grafos" style="z-index:9">
     <div class="col-md-12" id="grafica">
     </div>
     <div class="col-md-12" id="graficaConceptos">
@@ -46,7 +47,8 @@
     </div>
 </div>
 
-<style>
+<style id="Estradivarius">
+    /*style="position: center;background-color: rgba(151, 220, 255, 0.85);margin-left: 0%;margin-right: 0%;margin-bottom: 0%;margin-top: 0%;border: groove 4px rgba(0, 70, 156, 0.5);"*/
     table {
         position: center;
         background-color: rgba(151, 220, 255, 0.85);
@@ -56,11 +58,10 @@
         margin-top: 0%;
         border: groove 4px rgba(0, 70, 156, 0.5);
         width: 100%;
-    
     }
     td, th {
         border: solid 2px rgba(0, 70, 156, 0.75);
-        padding: 4px;
+        padding: 3px;
         text-align: left;
         color: black;
     }
@@ -69,6 +70,12 @@
         font-size:larger;   }
     .modal-backdrop {
         background-color: rgba(00,00,00,0.5);
+        display:none;width:100%;
+        z-index:9999999999999999999;
+        height:100%;
+        position:absolute;
+        top:0%;
+        left:0%;
     }
     .modal-content {
         font-weight : bold;
@@ -77,12 +84,12 @@
 </style>
 
 <script>
-    //buildHtmlTable('#excelDataTable');
     function ShowModal(){
         document.getElementById('Modal').style.display = 'inline';
+        document.getElementById('Grafos').style.display = 'inline';
     }
     function HideModal() {
-        //mostrar botones de guardar
+        //mostrar botones de guardadado
         document.getElementById('PDF').style.display = 'inline';
         document.getElementById('guardar').style.display = 'inline';
         document.getElementById('Modal').style.display = 'none';
@@ -90,12 +97,76 @@
     }
     function Delete() {
   document.getElementById('Modal').style.display = 'none';
-  document.getElementById('excelDataTable').innerHTML='';
+  document.getElementById('excelDataTable').innerHTML = '';
+  document.getElementById('Grafos').style.display = 'none';
     }
-    function CreatePDF(){
-        //Colocar la función para crear PDF
-    }
+   
+    function CreatePDF() {
 
+
+        html2canvas(document.querySelector("#Modal")).then(canvas => {
+                    document.body.appendChild(canvas)
+                    var img = canvas.toDataURL("#cell");
+
+
+            var doc = new jsPDF('l', 'pt', [1000, 450]);
+            //doc.addImage(img, 'JPEG', 10, 10);
+                      doc.addImage(img, 'png', 0, 0);
+            doc.save('test.pdf')
+        });
+    //    /////////////////////////////////////////////////////////////////////////////////
+    //$(document).ready(function () {
+    //    $("#ConvertPDF").on("click", function () {
+    //        var doc = new jsPDF();
+    //        var imgHeight = 140;
+    //        var imgWidth = 140;
+    //        var positionY = 20;
+    //        var positionX = 20;
+    //        doc.setFontSize(15);
+    //        doc.text(15, 15, "Hola JSPDF y html2canvas");
+    //        html2canvas($("#cell"), {
+    //            onrendered: function (canvas) {
+    //                var img = canvas.toDataURL("image/jpeg");
+    //                doc.addImage(img, 'JPEG'.positionX, positionY, 140, imgWidth);
+    //                doc.save('MyPdf.pdf');
+    //            }
+    //        });
+    //    });
+    //});
+
+        //////////////////////////////////////////////////////////////////////
+        //var ficha = document.getElementById(nombre);
+   	  //   var ventimp = window.open(' ', 'popimpr');
+	     //ventimp.document.write( ficha.innerHTML );
+      //  ventimp.document.close();
+        /////////////////////////////////// /////////////////////// doc.addImage(img, 'JPEG', 7, 34);
+
+        //doc = new jsPDF('p', 'mm', [450, 180]);
+        //var nombre = $('#cell').html();
+        //    //var specialElementHandlers = {function (element, render) {
+        //var specialElementHandlers = {function () {
+        //      return true;
+        //}
+        //};
+        // doc.setFontSize(40);
+        //doc.fromHTML(nombre, 5, 5, { 'width': 50, 'height': 20, 'margin': 1, 'elementHandlers': specialElementHandlers });
+
+        //doc.save('test.pdf');
+//////////////////////////////////////////////////////////////////////////
+
+   //html2canvas(document.body,{
+   //onrendered:function(canvas){
+
+   //var img=canvas.toDataURL(nombre);
+   //var doc = new jsPDF();
+   //doc.addImage(img,'JPEG',20,20);
+   //doc.save('test.pdf');
+   //}
+
+   //});
+/////////////////////////////////////
+    
+    }
 
     $(function () {
 
@@ -104,9 +175,7 @@
         //habilitarGuardarCalendario();
         //habilitarCalendario();
         //habilitarCargarClaves();
-
     });
-
     function prueba() {
         $.ajax({
             url: 'http://172.19.2.200/presupuesto/Nomina/TotalesConceptos',
@@ -118,7 +187,6 @@
             }
         });
     }
-
     function habilitarImportacion() {
         $("#fileuploader").uploadFile({
             url: '@Url.Action("ImportarArchivo", "Nomina")',
@@ -172,8 +240,6 @@
                  ShowModal();
             },
             //termina la funcion de (file, data, xhr, pd)
-
-
         });
     }
                //Se obtiene el Json para generar la tabla
@@ -186,7 +252,7 @@
                     myList = data;
                 }
             });
-            //Xomienza la elaboración de la tabla
+            //Comienza la elaboración de la tabla
             function buildHtmlTable(selector) {
                 var columns = addAllColumnHeaders(myList, selector);
                 for (var i = 0; i < myList.length; i++) {
@@ -452,7 +518,6 @@
     }
 
     function crearGraficaGastosTotalesConcepto() {
-
         $.ajax({
             url: '@Url.Action("TotalesConceptos", "Nomina")',
             success: function (resultado) {
@@ -516,15 +581,10 @@
                         }
                     }]
                 });
-
             },
             error: function (error) {
                 console.error(error);
             }
         });
-
     }
-
-
-
 </script>

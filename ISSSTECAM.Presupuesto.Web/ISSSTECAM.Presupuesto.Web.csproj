@@ -51,6 +51,14 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EO.Pdf, Version=20.0.33.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2020\EO.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Pdf.Mvc, Version=20.0.33.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Essential Objects\EO.Total 2020\EO.Pdf.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
       <Private>True</Private>
@@ -308,6 +316,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\Publicado.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\Html2Canvas\html2canvas.js" />
+    <Content Include="Scripts\Html2Canvas\html2canvas.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -327,6 +337,57 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery\dist\jquery.js" />
+    <Content Include="Scripts\jsPDF\build.js" />
+    <Content Include="Scripts\jsPDF\dist\jspdf.debug.js" />
+    <Content Include="Scripts\jsPDF\dist\jspdf.min.js" />
+    <Content Include="Scripts\jsPDF\jspdf.js" />
+    <Content Include="Scripts\jsPDF\libs\canvg_context2d\canvg.js" />
+    <Content Include="Scripts\jsPDF\libs\canvg_context2d\libs\rgbcolor.js" />
+    <Content Include="Scripts\jsPDF\libs\canvg_context2d\libs\StackBlur.js" />
+    <Content Include="Scripts\jsPDF\libs\css_colors.js" />
+    <Content Include="Scripts\jsPDF\libs\deflate.js" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\images\download.png" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\js\downloadify.min.js" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\js\swfobject.js" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\media\downloadify.swf" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\src\downloadify.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\dist\html2canvas.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\clone.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\color.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\core.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\dummyimagecontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\fallback.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\font.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\fontmetrics.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\framecontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\gradientcontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\imagecontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\imageloader.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\lineargradientcontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\log.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\nodecontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\nodeparser.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\promise.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\proxy.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\proxyimagecontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\pseudoelementcontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\renderer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\renderers\canvas.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\stackingcontext.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\support.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\svgcontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\svgnodecontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\textcontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\utils.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\webkitgradientcontainer.js" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\src\xhr.js" />
+    <Content Include="Scripts\jsPDF\libs\html2pdf.js" />
+    <Content Include="Scripts\jsPDF\libs\png_support\png.js" />
+    <Content Include="Scripts\jsPDF\libs\png_support\zlib.js" />
+    <Content Include="Scripts\jsPDF\libs\polyfill.js" />
+    <Content Include="Scripts\jsPDF\libs\require\config.js" />
+    <Content Include="Scripts\jsPDF\libs\require\require.js" />
+    <Content Include="Scripts\jsPDF\main.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\Mensajes.js" />
@@ -357,6 +418,13 @@
     <Content Include="Service References\RH.ServiciosWeb\ISSSTECAM.Presupuesto.Web.RH.ServiciosWeb.vstEmpleadoDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Scripts\jsPDF\libs\canvg_context2d\README.md" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\src\com\dynamicflash\util\Base64.as" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\src\com\dynamicflash\util\tests\Base64Test.as" />
+    <Content Include="Scripts\jsPDF\libs\Downloadify\src\Downloadify.as" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\LICENSE" />
+    <Content Include="Scripts\jsPDF\libs\html2canvas\readme.md" />
+    <Content Include="Scripts\jsPDF\libs\README" />
     <None Include="Service References\RH.ServiciosWeb\ServicioEmpleados.disco" />
     <None Include="Service References\RH.ServiciosWeb\configuration91.svcinfo" />
     <None Include="Service References\RH.ServiciosWeb\configuration.svcinfo" />

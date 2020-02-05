@@ -167,7 +167,7 @@
                                             <label data-load-css="css/theme-a.css">
                                                 <input type="radio" name="setting-theme" checked="checked">
                                                 <%--<span class="icon-check"></span>--%>
-                                    
+
                                                 <em class="fa fa-archive icono-sistema"></em>
                                                 <span class="split">
                                                     <span class="color bg-inventarios item-apps"></span>
@@ -244,7 +244,7 @@
                                             <span class="user-block-name">@ViewBag.Usuario</span>
                                             <span class="user-block-rol">@ViewBag.Puesto</span>
                                             @*<asp:Label ID="lblNombreCorto" runat="server" CssClass="user-block-name"  ClientIDMode="Static"></asp:Label>
-                                  <asp:Label ID="lblPuesto" runat="server" CssClass="user-block-role"  ClientIDMode="Static"></asp:Label>*@
+                                                <asp:Label ID="lblPuesto" runat="server" CssClass="user-block-role"  ClientIDMode="Static"></asp:Label>*@
                                         </span>
 
                                     </div>
@@ -271,7 +271,7 @@
 
                                 <li class="sidebar-subnav-header">Conceptos de nómina</li>
                                 <li>
-                                    <a href="@Url.Action("Conceptos", "Nomina")" class="ajax">                                        
+                                    <a href="@Url.Action("Conceptos", "Nomina")" class="ajax">
                                         <span>Conceptos de nómina</span>
                                     </a>
                                 </li>
@@ -312,24 +312,24 @@
                             <ul id="Solicitudes" class="nav sidebar-subnav collapse in" aria-expanded="true">
                                 <li class="sidebar-subnav-header">Listado</li>
                                 <li>
-                                    <a href="@Url.Action("Index", "Solicitudes")" class="ajax">                                        
+                                    <a href="@Url.Action("Index", "Solicitudes")" class="ajax">
                                         <span>Listado</span>
                                     </a>
                                 </li>
 
                                 <li class="sidebar-subnav-header">Operaciones</li>
                                 <li>
-                                    <a href="@Url.Action("Operaciones", "Solicitudes")" class="ajax">                                        
+                                    <a href="@Url.Action("Operaciones", "Solicitudes")" class="ajax">
                                         <span>Operaciones</span>
                                     </a>
                                 </li>
 
                                 @*<li class="sidebar-subnav-header">Calendario</li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Calendario")" class="ajax">
-                                        <span>Calendario</span>
-                                    </a>
-                                </li>*@
+                                    <li>
+                                        <a href="@Url.Action("Index", "Calendario")" class="ajax">
+                                            <span>Calendario</span>
+                                        </a>
+                                    </li>*@
                             </ul>
 
 
@@ -342,19 +342,19 @@
                             <ul id="Nomina" class="nav sidebar-subnav collapse in" aria-expanded="true">
 
                                 @*<li class="sidebar-subnav-header">Catálogo de conceptos</li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Nomina")" class="ajax">                                        
-                                        <span>Catálogo de conceptos</span>
-                                    </a>
-                                </li>*@
+                                    <li>
+                                        <a href="@Url.Action("Index", "Nomina")" class="ajax">
+                                            <span>Catálogo de conceptos</span>
+                                        </a>
+                                    </li>*@
 
                                 <li class="sidebar-subnav-header">Cargar nómina</li>
                                 <li>
-                                    <a href="@Url.Action("Cargar", "Nomina")" class="ajax">                                        
+                                    <a href="@Url.Action("Cargar", "Nomina")" class="ajax">
                                         <span>Cargar nómina</span>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
                     </ul>
@@ -388,7 +388,7 @@
                 </div>
                 <div class="row">
                     @*<asp:ContentPlaceHolder ID="Contenido" runat="server">
-                    </asp:ContentPlaceHolder>*@
+                        </asp:ContentPlaceHolder>*@
                     @RenderBody()
                 </div>
             </div>
@@ -400,7 +400,7 @@
                     <div class="nombrelogo">Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado de Campeche</div>
                     <div class="logo">ISSSTECAM</div>
                     <div>
-                        Calle 10 s/n entre 63 y 65, Col. Centro San Francisco de Campeche, Campeche 
+                        Calle 10 s/n entre 63 y 65, Col. Centro San Francisco de Campeche, Campeche
                     </div>
                 </div>
                 <div style="float: left">
@@ -459,6 +459,15 @@
 
     <script src="https://omnipotent.net/jquery.sparkline/2.1.2/jquery.sparkline.min.js.gz"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <!-- jQuery library -->
+    <script src="Scripts/jquery.min.js"></script>
+    <!-- jsPDF library (buscar el de html2canvas y sustituir jsPDF. por que este no hereda los css del html)-->
+    <script src="Scripts/jsPDF/dist/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    @*<script src="~/Scripts/Html2Canvas/html2canvas.js"></script>
+        <script src="~/Scripts/Html2Canvas/html2canvas.min.js"></script>*@
 
 
     <script src="~/Scripts/app.js"></script>
