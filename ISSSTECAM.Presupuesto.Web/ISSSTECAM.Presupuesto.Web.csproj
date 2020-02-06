@@ -393,6 +393,7 @@
     <Content Include="Scripts\Mensajes.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr\modernizr.custom.js" />
+    <Content Include="Scripts\NominaCargar.js" />
     <Content Include="Scripts\notificacion.js" />
     <Content Include="Scripts\PaginaMaestra.js" />
     <Content Include="Scripts\screenfull\dist\screenfull.js" />
