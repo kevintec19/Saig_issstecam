@@ -8,8 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EO.Pdf.Mvc;
-using EO.Pdf;
+
 
 namespace ISSSTECAM.Presupuesto.Web.Controllers
 {
