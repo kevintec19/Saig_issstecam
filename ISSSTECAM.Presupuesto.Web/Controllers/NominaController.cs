@@ -8,8 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EO.Pdf.Mvc;
-using EO.Pdf;
+
 
 namespace ISSSTECAM.Presupuesto.Web.Controllers
 {
@@ -29,18 +28,7 @@ namespace ISSSTECAM.Presupuesto.Web.Controllers
         }
 
         [HttpPost]
-        //[EO.Pdf.Mvc.RenderAsPDF(AutoConvert = falso)]
 
-        //public ActionResult Input(AddressModel m)
-        //{
-        //    // Activa la conversión solo cuando m.ExportToPDF es verdadero 
-        //    if (m.ExportToPDF)
-        //    {
-        //        EO.Pdf.Mvc.MVCToPDF.ResultFileName = "AddressLabel";
-        //        EO.Pdf.Mvc.MVCToPDF.RenderAsPDF();
-        //    }
-        //    return View("AddressLabel", m);
-        //}
         public JsonResult ImportarArchivo(/*string fechaNomina*/)
         {
             Nomina nueva = new Nomina();
@@ -89,7 +77,8 @@ namespace ISSSTECAM.Presupuesto.Web.Controllers
                         {
                             foreach (var concepto in ConceptosEncontrados)
                             {
-                                Conceptos.Add(
+                          
+                                    Conceptos.Add(
                                     new Concepto
                                     {
                                         Id = concepto.Id,
@@ -127,8 +116,9 @@ namespace ISSSTECAM.Presupuesto.Web.Controllers
                         continue;
                     }
 
-                    foreach (var concepto in Conceptos)
-                    {
+                    foreach (Concepto concepto in Conceptos)
+                        //foreach (var concepto in Conceptos)
+                        {
                         if (concepto.Detalles == null)
                             concepto.Detalles = new List<DetalleConcepto>();
 
